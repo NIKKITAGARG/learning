@@ -14,6 +14,7 @@ export async function dbConnection(){
       mongoose.connection.on("error", (error) => {
           throw new Error(`unable to connect to database: ${error}`);
       });
+      console.log("connectod to mongodb");
   } catch (error) {
       throw new Error(`unable to connect to database: $(error)`);
   }
