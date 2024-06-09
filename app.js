@@ -1,18 +1,19 @@
 import dotenv from "dotenv";
-import { dbConnection } from "./db/connection";
+import express from "express";
+import {dbConnection} from "./db/connection.js"
 dotenv.config({path: "config.env"});
 
-const express = require('express');
 const app = express();
 const hostname = '127.0.0.1';
 const PORT = 3005;
 
 // For parsing application/json
 app.use(express.json());
-app.use(dbConnection());
+dbConnection();
 
 // For parsing application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
+
 
 app.post('/profile', (req, res) => {
 	console.log(req.body);
